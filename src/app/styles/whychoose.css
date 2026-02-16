@@ -1,0 +1,132 @@
+.whychoose-section {
+  background: linear-gradient(#ffffff 0%, #e2f0ff 40%, #c4daff 100%);
+  padding: 60px 20px;
+}
+
+.whychoose-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.whychoose-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.whychoose-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.whychoose-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.whychoose-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.whychoose-icon {
+    background: #0061ff99;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 60px;
+    margin-bottom: 0px;
+    display: flex;
+}
+
+.whychoose-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.whychoose-card p {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* icon + title in one row */
+.whychoose-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.whychoose-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .whychoose-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ================= MOBILE / TABLET (<= 992px) ================= */
+
+@media (max-width: 992px) {
+
+  .whychoose-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 10px;
+  }
+
+  .whychoose-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .whychoose-card {
+    flex: 0 0 85%;
+    min-width: 85%;
+    scroll-snap-align: start;
+    border-radius: 20px;
+  }
+
+  /* Make card layout vertical */
+  .whychoose-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .whychoose-icon {
+    width: 95px;
+    height: 50px;
+    border-radius: 16px;
+  }
+
+  .whychoose-card h3 {
+    display: flex;
+    margin-top: 5px;
+    font-size: 18px;
+    color: black;
+  }
+  
+  .whychoose-title{
+    color: black;
+  }
+
+}
+
+
+
