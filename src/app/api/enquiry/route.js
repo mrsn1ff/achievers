@@ -16,6 +16,28 @@ export async function POST(req) {
       message: body.message,
     });
 
+    /* 🔔 Send data to Pabbly Webhook */
+    try {
+      await fetch(
+        "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjcwNTZjMDYzZTA0MzE1MjZiNTUzMTUxMzMi_pc",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: saved.name,
+            phone: saved.phone,
+            message: saved.message,
+            createdAt: saved.createdAt,
+          }),
+        }
+      );
+    } catch (webhookError) {
+      console.error("Pabbly Webhook Error:", webhookError);
+      // webhook fail ho jaye tab bhi enquiry save rahegi
+    }
+
     return Response.json(
       { success: true, data: saved },
       { status: 201 }
@@ -36,8 +58,7 @@ export async function GET() {
   try {
     await connectDB();
 
-    const enquiries = await Enquiry.find({})
-      .sort({ createdAt: -1 }); // latest first
+    const enquiries = await Enquiry.find({}).sort({ createdAt: -1 });
 
     return Response.json(
       { success: true, count: enquiries.length, data: enquiries },
