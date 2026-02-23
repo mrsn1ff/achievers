@@ -45,7 +45,7 @@ export default function Hero({ onEnquiryClick, onExploreClick , onResultsClick }
                 <div className="hero-right slide-in">
                     <div className="video-card">
                         <div className="video-thumbnail">
-                            <img src="/jatin.PNG" alt="Video Thumbnail" />
+                            <img src="/jatin.png" alt="Video Thumbnail" />
                             <div className="play-button">▶</div>
                         </div>
                     </div>

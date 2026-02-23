@@ -1,0 +1,125 @@
+.footer {
+  background: linear-gradient(135deg, #0f172a, #0b1220);
+  color: #fff;
+  padding: 70px 20px 30px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+}
+
+.footer-col h2 {
+  font-size: 24px;
+  margin-bottom: 18px;
+  background: linear-gradient(90deg, #60a5fa, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-col h3 {
+  font-size: 18px;
+  margin-bottom: 18px;
+  color: #e2e8f0;
+}
+
+.footer-col p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #94a3b8;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.footer-col ul li:hover {
+  color: #60a5fa;
+  transform: translateX(4px);
+}
+
+/* CONTACT ITEMS */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+/* SOCIAL */
+.social-icons {
+  margin-top: 18px;
+  display: flex;
+  gap: 14px;
+}
+
+.social-icons a {
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: 0.3s;
+  color: #fff;
+}
+
+.social-icons a:hover {
+  background: linear-gradient(135deg, #3b82f6, #22d3ee);
+  transform: translateY(-4px);
+}
+
+/* BOTTOM */
+.footer-bottom {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 992px) {
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .footer {
+    padding: 60px 20px 25px;
+  }
+
+  .footer-col h2 {
+    font-size: 20px;
+  }
+
+  .footer-col h3 {
+    font-size: 16px;
+  }
+
+  .footer-col p,
+  .footer-col ul li,
+  .contact-item {
+    font-size: 13px;
+  }
+
+}

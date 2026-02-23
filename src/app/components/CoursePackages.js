@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 export default function CoursePackages({ onEnquiryClick }) {
 
     return (
-        <section className="course-section">
+        <section className="course-section" id="course-section">
             <div className="course-container">
 
                 <h2 className="course-title">

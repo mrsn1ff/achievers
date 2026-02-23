@@ -8,6 +8,7 @@ import WhyChoose from "../app/components/WhyChoose";
 import DualTestimonials from "./components/DualTestimonials";
 import CoursePackages from "./components/CoursePackages";
 import EnquirySection from "./components/EnquirySection";
+import Footer from "./components/Footer";
 
 export default function Home() {
 
@@ -66,6 +67,7 @@ export default function Home() {
         isOpen={openEnquiry}
         onClose={() => setOpenEnquiry(false)}
       />
+      <Footer />
     </>
   );
 }

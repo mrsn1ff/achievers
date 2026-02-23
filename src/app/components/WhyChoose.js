@@ -42,7 +42,7 @@ export default function WhyChoose() {
 
 
   return (
-    <section className="whychoose-section">
+    <section className="whychoose-section" id="why-choose">
       <div className="whychoose-container">
         <h2 className="whychoose-title">
           Why Choose US JR CLASSES ?
