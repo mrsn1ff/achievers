@@ -13,14 +13,12 @@
   visibility: hidden;
   transition: all 0.4s ease;
 }
-
 .form-status {
   margin: 10px 0;
   font-size: 14px;
   font-weight: 500;
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out; 
 }
-
 .form-status.success {
   color: #00c853;
 }
@@ -204,7 +202,8 @@
 }
 
 .form-fields input,
-.form-fields textarea {
+.form-fields textarea,
+.form-fields select { 
   padding: 14px 18px;
   border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.1);
@@ -235,6 +234,18 @@
 
 .submit-btn:hover {
   transform: translateY(-3px);
+}
+
+/* ✅ Fix dropdown arrow visibility */
+.form-fields select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.form-fields select option {
+  color: #000;   /* dropdown options readable */
 }
 
 /* ================= MOBILE FIX ================= */

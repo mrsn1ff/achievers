@@ -1,5 +1,3 @@
-// src/models/Enquiry.js
-
 import mongoose from "mongoose";
 
 const EnquirySchema = new mongoose.Schema(
@@ -10,14 +8,13 @@ const EnquirySchema = new mongoose.Schema(
       trim: true,
     },
     phone: {
-      type: String, // ✅ FIXED (NOT number)
+      type: String,
       required: true,
       trim: true,
     },
-    message: {
+    className: {   // ✅ NEW FIELD
       type: String,
-      default: "",
-      trim: true,
+      required: true,
     },
   },
   { timestamps: true }
