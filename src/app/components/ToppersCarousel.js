@@ -78,12 +78,12 @@ export default function ToppersCarousel() {
                   <div className="cbse-badge"><i>CBSE</i></div>
 
                   {/* ▶ Play button */}
-                  <div
+                  {/* <div
                     className="play-btn"
                     onClick={() => setActiveVideo(t.video)}
                   >
                     ▶
-                  </div>
+                  </div> */}
 
                   <div className="topper-overlay">
                     <div className="overlay-content">

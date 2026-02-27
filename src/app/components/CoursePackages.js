@@ -78,8 +78,8 @@ export default function CoursePackages({ onEnquiryClick }) {
 
                         <div className="course-footer">
                             <div className="price">
-                                <h4>₹24,999</h4>
-                                <span>₹34,999</span>
+                                <h4>₹26,999</h4>
+                                <span>₹31,999</span>
                             </div>
 
                             <button className="details-btn" onClick={onEnquiryClick}>Details</button>

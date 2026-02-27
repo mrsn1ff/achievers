@@ -1,8 +1,13 @@
 import "../styles/hero.css";
 import { FaArrowRight } from "react-icons/fa";
 
-
-export default function Hero({ onEnquiryClick, onExploreClick , onResultsClick }) {
+// ✅ UPDATED: Added onVideoClick in props
+export default function Hero({
+    onEnquiryClick,
+    onExploreClick,
+    onResultsClick,
+    onVideoClick      // ✅ NEW
+}) {
 
     return (
         <section className="hero">
@@ -31,7 +36,12 @@ export default function Hero({ onEnquiryClick, onExploreClick , onResultsClick }
                         <button className="primary-btn" onClick={onExploreClick}>Explore Courses</button>
                         <button
                             className="secondary-btn"
-                            onClick={onEnquiryClick}
+                            onClick={() => {
+  if (window.fbq) {
+    window.fbq("trackCustom", "ContactClick");
+  }
+  onEnquiryClick();
+}}
                         >
                             Free Counselling
                         </button>
@@ -44,7 +54,12 @@ export default function Hero({ onEnquiryClick, onExploreClick , onResultsClick }
                 {/* RIGHT CONTENT */}
                 <div className="hero-right slide-in">
                     <div className="video-card">
-                        <div className="video-thumbnail">
+                        {/* <div className="video-thumbnail">
+                            <img src="/jatin.png" alt="Video Thumbnail" />
+                            <div className="play-button">▶</div>
+                        </div> */}
+
+                        <div className="video-thumbnail" onClick={onVideoClick}>
                             <img src="/jatin.png" alt="Video Thumbnail" />
                             <div className="play-button">▶</div>
                         </div>
@@ -54,7 +69,12 @@ export default function Hero({ onEnquiryClick, onExploreClick , onResultsClick }
                         <button className="primary-btn" onClick={onExploreClick}    >Explore Courses</button>
                         <button
                             className="secondary-btn"
-                            onClick={onEnquiryClick}
+                            onClick={() => {
+  if (window.fbq) {
+    window.fbq("trackCustom", "ContactClick");
+  }
+  onEnquiryClick();
+}}
                         >
                             Free Counselling
                         </button>

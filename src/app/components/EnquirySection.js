@@ -7,15 +7,17 @@ export default function EnquirySection({ isOpen, onClose }) {
 
   const [formData, setFormData] = useState({
     name: "",
-    className: "",   // ✅ NEW FIELD
+    className: "",
     phone: "",
     otp: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSendingOtp, setIsSendingOtp] = useState(false);      // ✅ NEW
+  const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);  // ✅ NEW
+
   const [statusMessage, setStatusMessage] = useState(null);
   const [statusType, setStatusType] = useState("");
-
   const [otpSent, setOtpSent] = useState(false);
 
   /* ================= HANDLE CHANGE ================= */
@@ -31,11 +33,16 @@ export default function EnquirySection({ isOpen, onClose }) {
   /* ================= STEP 1: SUBMIT CLICK ================= */
   const handleInitialSubmit = async () => {
 
+    if (isSendingOtp) return;   // ✅ prevent double click
+
     if (!formData.name || !formData.phone || !formData.className) {
       setStatusType("error");
       setStatusMessage("Please fill all fields.");
       return;
     }
+
+    setIsSendingOtp(true);   // ✅ start loading
+    setStatusMessage(null);
 
     try {
       const res = await fetch("/api/send-otp", {
@@ -50,24 +57,36 @@ export default function EnquirySection({ isOpen, onClose }) {
         setOtpSent(true);
         setStatusType("success");
         setStatusMessage("OTP sent to your phone.");
+
+        if (window.fbq) {
+          window.fbq("track", "InitiateCheckout");
+        }
+
       } else {
         setStatusType("error");
         setStatusMessage(data.message);
       }
+
     } catch {
       setStatusType("error");
       setStatusMessage("Failed to send OTP.");
     }
+
+    setIsSendingOtp(false);   // ✅ stop loading
   };
 
   /* ================= STEP 2: VERIFY OTP ================= */
   const verifyOtp = async () => {
+
+    if (isVerifyingOtp) return;   // ✅ prevent double click
 
     if (formData.otp.length !== 6) {
       setStatusType("error");
       setStatusMessage("Enter valid OTP.");
       return;
     }
+
+    setIsVerifyingOtp(true);   // ✅ start verifying
 
     try {
       const res = await fetch("/api/verify-otp", {
@@ -82,7 +101,14 @@ export default function EnquirySection({ isOpen, onClose }) {
       const data = await res.json();
 
       if (data.success) {
+
+        // ✅ Fire Lead only after success
+        if (typeof window !== "undefined" && window.fbq) {
+          window.fbq("track", "Lead");
+        }
+
         await finalSubmit();
+
       } else {
         setStatusType("error");
         setStatusMessage("Invalid OTP.");
@@ -91,6 +117,8 @@ export default function EnquirySection({ isOpen, onClose }) {
       setStatusType("error");
       setStatusMessage("OTP verification failed.");
     }
+
+    setIsVerifyingOtp(false);   // ✅ stop verifying
   };
 
   /* ================= FINAL SAVE ================= */
@@ -108,7 +136,7 @@ export default function EnquirySection({ isOpen, onClose }) {
         body: JSON.stringify({
           name: formData.name,
           phone: formData.phone,
-          className: formData.className,  // ✅ SEND CLASS
+          className: formData.className,
         }),
       });
 
@@ -192,16 +220,15 @@ export default function EnquirySection({ isOpen, onClose }) {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  disabled={isSubmitting}
+                  disabled={isSendingOtp || isVerifyingOtp}
                 />
 
-                {/* ✅ NEW DROPDOWN (NO DESIGN CHANGE) */}
                 <select
                   name="className"
                   required
                   value={formData.className}
                   onChange={handleChange}
-                  disabled={isSubmitting}
+                  disabled={isSendingOtp || isVerifyingOtp}
                 >
                   <option value="">Select Class</option>
                   <option value="Class 11th">Class 11th</option>
@@ -217,7 +244,7 @@ export default function EnquirySection({ isOpen, onClose }) {
                   maxLength={10}
                   value={formData.phone}
                   onChange={handleChange}
-                  disabled={isSubmitting}
+                  disabled={isSendingOtp || isVerifyingOtp}
                 />
 
                 {/* STEP 1 BUTTON */}
@@ -226,8 +253,9 @@ export default function EnquirySection({ isOpen, onClose }) {
                     type="button"
                     className="submit-btn"
                     onClick={handleInitialSubmit}
+                    disabled={isSendingOtp}
                   >
-                    Submit <FiSend />
+                    {isSendingOtp ? "Submitting..." : <>Submit <FiSend /></>}
                   </button>
                 )}
 
@@ -241,16 +269,16 @@ export default function EnquirySection({ isOpen, onClose }) {
                       maxLength={6}
                       value={formData.otp}
                       onChange={handleChange}
-                      disabled={isSubmitting}
+                      disabled={isVerifyingOtp}
                     />
 
                     <button
                       type="button"
                       className="submit-btn"
                       onClick={verifyOtp}
-                      disabled={isSubmitting}
+                      disabled={isVerifyingOtp}
                     >
-                      Verify OTP
+                      {isVerifyingOtp ? "Verifying..." : "Verify OTP"}
                     </button>
                   </>
                 )}
