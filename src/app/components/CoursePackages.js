@@ -20,19 +20,24 @@ export default function CoursePackages({ onEnquiryClick }) {
                 {/* ACTION BUTTONS */}
                 <div className="course-actions">
 
-                    <button className="enquiry-btn" onClick={onEnquiryClick}>
+                    <button className="enquiry-btn" onClick={() => {
+                        if (window.fbq) {
+                            window.fbq("trackCustom", "ContactClick");
+                        }
+                        onEnquiryClick();
+                    }}>
                         <FiSend className="btn-icon" />
                         Course Enquiry
                     </button>
 
                     {/* CALL BUTTON */}
-                    <a href="tel:+919876543210" className="icon-btn call-btn">
+                    <a href="tel:+919711454546" className="icon-btn call-btn">
                         <FiPhoneCall />
                     </a>
 
                     {/* WHATSAPP BUTTON */}
                     <a
-                        href="https://wa.me/919876543210"
+                        href="https://wa.me/919711454546"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="icon-btn whatsapp-btn"
@@ -82,7 +87,12 @@ export default function CoursePackages({ onEnquiryClick }) {
                                 <span>₹31,999</span>
                             </div>
 
-                            <button className="details-btn" onClick={onEnquiryClick}>Details</button>
+                            <button className="details-btn" onClick={() => {
+                                if (window.fbq) {
+                                    window.fbq("trackCustom", "ContactClick");
+                                }
+                                onEnquiryClick();
+                            }}>Details</button>
                         </div>
 
                     </div>
