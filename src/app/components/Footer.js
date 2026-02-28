@@ -35,7 +35,7 @@ export default function Footer() {
 
           <div className="social-icons">
             <a
-              href="https://instagram.com/"
+              href="https://www.instagram.com/economics_matlab_jatinrajpal/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -43,7 +43,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="https://youtube.com/"
+              href="https://www.youtube.com/@EconomicsbyJatinRajpal"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -51,7 +51,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/918802666661"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -114,7 +114,7 @@ export default function Footer() {
 
           <div className="contact-item">
             <FaPhoneAlt />
-            <a href="tel:+919876543210">+91 98765 43210</a>
+            <a href="tel:+919876543210">+91 8802666661</a>
           </div>
 
           <div className="contact-item">

@@ -31,13 +31,13 @@ export default function CoursePackages({ onEnquiryClick }) {
                     </button>
 
                     {/* CALL BUTTON */}
-                    <a href="tel:+919711454546" className="icon-btn call-btn">
+                    <a href="tel:+918802666661" className="icon-btn call-btn">
                         <FiPhoneCall />
                     </a>
 
                     {/* WHATSAPP BUTTON */}
                     <a
-                        href="https://wa.me/919711454546"
+                        href="https://wa.me/918802666661"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="icon-btn whatsapp-btn"
